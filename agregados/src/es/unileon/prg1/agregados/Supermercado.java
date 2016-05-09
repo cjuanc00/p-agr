@@ -25,7 +25,7 @@ class Supermercado{
 	 */
 	Supermercado(String nombre){
 		this.nombre = nombre;
-		this.almacen = new Almacen();
+		this.almacen = new Almacen(null, 0);
 	}
 
 	/**

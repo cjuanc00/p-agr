@@ -27,9 +27,11 @@ class Almacen{
 	/**
 	 * Constructor de la clase que inicializa sus atributos
 	 */
-	Almacen(){
-		//COMPLETAR
-		
+
+	public Almacen(Producto[] productos, int siguiente) {
+		super();
+		this.productos = productos;
+		this.siguiente = siguiente;
 	}
 
 	/**
@@ -68,7 +70,14 @@ class Almacen{
 	 */
 	boolean existe(Producto producto){
 		//COMPLETAR
-		return false;
+		boolean existe=false;
+		
+		if (buscar(producto.obtenerNombre())!= null){
+			existe = false;
+		}else{
+			existe = true;
+		}
+		return existe;
 	}
 
 	/**
@@ -81,6 +90,30 @@ class Almacen{
 	 */
 	Producto buscar(String nombre){
 		//COMPLETAR
+		Producto producto;
+		int comparar, mitad, limiteInferior, limiteSuperior;
+		
+		mitad=0;
+		comparar=0;
+		limiteInferior=0;
+		limiteSuperior=this.productos.length-1;
+		
+		producto=null;
+		
+		 while ( (limiteInferior <= limiteSuperior) && (producto == null)) {
+				 mitad = (limiteInferior + limiteSuperior) / 2 ; 
+				 comparar = productos[mitad].esMenor(producto);
+				 if (comparar < 0){
+				 limiteInferior = mitad + 1;
+				 } else if (comparar > 0) {
+				 limiteSuperior = mitad - 1;
+				 } else{
+				 producto = productos[mitad];
+				 }
+				 return producto; 
+		}
+		
+		
 		return null;
 	}
 
